@@ -7,7 +7,8 @@ pipeline {
                sh'''
                ls -la
                node --version
-               
+               npm ci
+               npm run build
                '''
             }
         }
