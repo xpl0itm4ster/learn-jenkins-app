@@ -7,12 +7,29 @@ pipeline {
                sh'''
                node --version
                npm ci
-               npm run build
+               #npm run build
                ls -la
                '''
             }
 
         }
+
+        stage{
+            parallel{
+                echo 'hola 1'
+                                echo 'hola 2'
+
+                echo 'hola 13'
+
+                echo 'hola 4'
+
+                echo 'hola 5'
+
+
+            }
+        }
+
+
          stage('Test'){
         steps{
             sh '''
