@@ -3,8 +3,8 @@ pipeline {
 
     stages {
         stage('Build') {
-             steps {cleanWs()}
             steps {
+            cleanWs()
                sh'''
                node --version
                npm ci
@@ -12,6 +12,7 @@ pipeline {
                ls -la
                '''
             }
+
         }
          stage('Test'){
         steps{
