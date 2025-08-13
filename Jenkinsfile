@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-            cleanWs()
                sh'''
                node --version
                npm ci
@@ -22,5 +21,10 @@ pipeline {
             '''
         }
     }
+    }
+    post{
+        always{
+            cleanWs()
+        }
     }
 }
