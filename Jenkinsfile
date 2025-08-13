@@ -4,47 +4,49 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               sh'''
+               sh '''
                node --version
                npm ci
-               #npm run build
                ls -la
                '''
             }
-
         }
 
-        stage('Paralelo'){
-            parallel{
-                 steps {
-                echo 'hola 1'
-                                echo 'hola 2'
-
-                echo 'hola 13'
-
-                echo 'hola 4'
-
-                echo 'hola 5'
-
-            }
-              
-
+        stage('Paralelo') {
+            parallel {
+                stage('Tarea 1') {
+                    steps {
+                        echo 'hola 1'
+                        echo 'hola 2'
+                    }
+                }
+                stage('Tarea 2') {
+                    steps {
+                        echo 'hola 3'
+                        echo 'hola 4'
+                    }
+                }
+                stage('Tarea 3') {
+                    steps {
+                        echo 'hola 5'
+                    }
+                }
             }
         }
 
-
-         stage('Test'){
-        steps{
-            sh '''
-            test -f build/index.html
-            npm test
-            '''
+        stage('Test') {
+            steps {
+                sh '''
+                test -f build/index.html
+                npm test
+                '''
+            }
         }
     }
-    }
-    post{
-        always{
-             junit 'test-results/junit.xml'
+
+    post {
+        always {
+            junit 'test-results/junit.xml'
         }
     }
 }
