@@ -16,6 +16,7 @@ pipeline {
 
         stage{
             parallel{
+                 steps {
                 echo 'hola 1'
                                 echo 'hola 2'
 
@@ -25,6 +26,8 @@ pipeline {
 
                 echo 'hola 5'
 
+            }
+              
 
             }
         }
