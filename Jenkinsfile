@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy') {
                     steps {
                     sh '''
-                    npm i netlify-cli -g
+                    npm i netlify-cli
                     node_modules/.bin/netlify --version
 
                     '''
